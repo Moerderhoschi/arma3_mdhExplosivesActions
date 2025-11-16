@@ -8,7 +8,7 @@ class CfgPatches
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"A3_Weapons_F"};
-		//url = "https://steamcommunity.com/sharedfiles/filedetails/?id=3473212949";
+		url = "https://steamcommunity.com/sharedfiles/filedetails/?id=3606788696";
 	};
 };
 
@@ -47,6 +47,6 @@ class CfgMods
 		hidePicture = "true";
 		hideName = "true";
 		actionName = "Website";
-		//action = "https://steamcommunity.com/sharedfiles/filedetails/?id=3473212949";
+		action = "https://steamcommunity.com/sharedfiles/filedetails/?id=3606788696";
 	};
 };
