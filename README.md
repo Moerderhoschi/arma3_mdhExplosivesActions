@@ -9,10 +9,6 @@ You get the better holdAction menu entries to put down Explosives or you also ca
 IS THE ADDON MP COMPATIBLE?
 Yes, in MP only the Client/Player needs the Addon.
 
-ADDITIONAL FILES
-Contents of this download/subscription:
-- signature files
-
 Dowload on Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=3606788696
 
 CREDITS
