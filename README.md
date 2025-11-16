@@ -1,5 +1,6 @@
 <img src="https://github.com/user-attachments/assets/c9b0e9a7-6524-426f-a50c-6ce039244b1d" />
 
+
 MDH Explosives Actions is a mod, created by Moerderhoschi for Arma 3. 
 
 HOW THE ADDON WORKS?
