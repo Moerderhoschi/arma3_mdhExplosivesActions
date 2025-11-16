@@ -8,7 +8,7 @@ class CfgPatches
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"A3_Weapons_F","CSLA"};
-		url = "https://steamcommunity.com/sharedfiles/filedetails/?id=3606788696";
+		url = "https://steamcommunity.com/sharedfiles/filedetails/?id=3606905793";
 	};
 };
 
@@ -43,6 +43,6 @@ class CfgMods
 		hidePicture = "true";
 		hideName = "true";
 		actionName = "Website";
-		action = "https://steamcommunity.com/sharedfiles/filedetails/?id=3606788696";
+		action = "https://steamcommunity.com/sharedfiles/filedetails/?id=3606905793";
 	};
 };
