@@ -19,13 +19,4 @@ CREDITS
 Armed-Assault.de Crew - For many great ArmA moments in many years
 BIS - For ArmA3
 
-You like my mod? Check out my other Mods: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3408421250]Arma 3 Mods created by Moerderhoschi[/url]
-
-github: https://github.com/Moerderhoschi/arma3_mdhExplosivesActions
-
-[h1]You like my work and want to support me?[/h1]
-[img]https://i.imgur.com/NrstAKw.gif[/img]
-[img]https://i.ibb.co/MkW3w5w8/GIF-05-03-2025-14-11-05.gif[/img]
-[url=https://www.paypal.me/moerderhoschi]Paypal[/url]
-
-[b]thank you :-)[/b]
+You like my mod? Check out my other Mods: [Arma 3 Mods created by Moerderhoschi](https://steamcommunity.com/sharedfiles/filedetails/?id=3408421250)
