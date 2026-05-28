@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// MDH EXPLOSIVES ACTIONS(by Moerderhoschi) - v2025-11-16
+// MDH EXPLOSIVES ACTIONS(by Moerderhoschi) - v2026-05-27
 // github: https://github.com/Moerderhoschi/arma3_mdhExplosivesActions
 // steam mod version: https://steamcommunity.com/sharedfiles/filedetails/?id=3606788696
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -7,6 +7,7 @@ if (missionNameSpace getVariable ["pMdhExplosivesActions",99] == 99) then
 {
 	0 spawn
 	{
+		scriptName "mdhExplosivesActions.sqf";
 		_valueCheck = 99;
 		_defaultValue = 99;
 		_env  = hasInterface;
@@ -47,17 +48,17 @@ if (missionNameSpace getVariable ["pMdhExplosivesActions",99] == 99) then
 						[
 							_t,
 							(
-								'<br/>MDH Explosives Actions is a mod created by Moerderhoschi for Arma 3. (v2025-11-16)<br/>'
+								'<br/>MDH Explosives Actions is a mod created by Moerderhoschi for Arma 3. (v2026-05-27)<br/>'
 							+ '<br/>'
 							+ 'you get the better holdAction menu entries to put down Explosives.<br/>'
 							+ '<br/>'
 							+ 'MDH Explosives Actions Modoptions:'
-							+ '<br/><br/>'
+							+ '<br/>'
 							+ 'Show holdActions to place explosives: '
 							+    '<font color="#33CC33"><execute expression = "[''mdhExplosivesActionsOn'',true,''MDH Explosives Actions On''] call mdhExplosivesActionsBriefingFnc">ON</execute></font color>'
 							+ ' / <font color="#CC0000"><execute expression = "[''mdhExplosivesActionsOn'',false,''MDH Explosives Actions Off''] call mdhExplosivesActionsBriefingFnc">OFF</execute></font color>'							
 							+ '<br/>'
-							+ '<br/>If you have any question you can contact me at the steam workshop page.'
+							+ '<br/>If you have any question you can contact me at the steam workshop page.<br/>'
 							+ '<br/>'
 							+ 'Credits and Thanks:<br/>'
 							+ 'Armed-Assault.de Crew  for many great ArmA moments in many years<br/>'
@@ -90,56 +91,60 @@ if (missionNameSpace getVariable ["pMdhExplosivesActions",99] == 99) then
 				};
 
 				player setUnitTrait ["ExplosiveSpecialist", true];
+				if (profileNameSpace getVariable["mdhExplosivesActionsOn",false]) then
 				{
-					_t = (_x#2);
-					_mag = (_x#0);
-					_f = false;
-					_b = player;
 					{
-						if (_t in (_b actionParams _x select 0)) then
+						_t = (_x#2);
+						_mag = (_x#0);
+						_f = false;
+						_b = player;
 						{
-							_f = true;
-						};																
-					} forEach (actionIDs _b);
-			
-					if (!_f) then
-					{
-						_code =
+							if (_t in (_b actionParams _x select 0)) then
+							{
+								_f = true;
+							};																
+						} forEach (actionIDs _b);
+				
+						if (!_f) then
 						{
-							_mag = (_this#3#0#0);
-							_muzzle = (_this#3#0#1);
-							_curWeap =  weaponState player select [0,3];
-							player playActionNow "PutDown";
-							player selectWeapon _muzzle;
-							player fire [_muzzle, _muzzle, _mag];
-							sleep 0.2;
-							player selectWeapon _curWeap;
+							_code =
+							{
+								_mag = (_this#3#0#0);
+								_muzzle = (_this#3#0#1);
+								_curWeap =  weaponState player select [0,3];
+								player playActionNow "PutDown";
+								player selectWeapon _muzzle;
+								player fire [_muzzle, _muzzle, _mag];
+								player setWeaponReloadingTime [player, _muzzle, 0];
+								sleep 0.2;
+								player selectWeapon _curWeap;
+							};
+		
+							[
+								_b
+								,_t
+								,"a3\ui_f_oldman\Data\IGUI\Cfg\HoldActions\destroy_ca.paa"
+								,"a3\ui_f_oldman\Data\IGUI\Cfg\HoldActions\destroy_ca.paa"
+								,"
+									(profileNameSpace getVariable['mdhExplosivesActionsOn',false])
+									&& {vehicle player == player}
+									&& {"""+_mag+""" in magazines player}
+								"
+								,"true"
+								,{}
+								,{}
+								,_code
+								,{}
+								,[_x]
+								,1
+								,-2
+								,false
+								,false
+								,false
+							] call mdhHoldActionAdd;
 						};
-	
-						[
-							_b
-							,_t
-							,"a3\ui_f_oldman\Data\IGUI\Cfg\HoldActions\destroy_ca.paa"
-							,"a3\ui_f_oldman\Data\IGUI\Cfg\HoldActions\destroy_ca.paa"
-							,"
-								(profileNameSpace getVariable['mdhExplosivesActionsOn',false])
-								&& {vehicle player == player}
-								&& {"""+_mag+""" in magazines player}
-							"
-							,"true"
-							,{}
-							,{}
-							,_code
-							,{}
-							,[_x]
-							,1
-							,-1
-							,false
-							,false
-							,false
-						] call mdhHoldActionAdd;
-					};
-				} forEach mdhMuzzleMags;
+					} forEach mdhMuzzleMags;
+				};
 			};
 		};
 
@@ -156,13 +161,13 @@ if (missionNameSpace getVariable ["pMdhExplosivesActions",99] == 99) then
 			};
 		};
 
+		_mdhModDiaryEntries = +mdhModDiaryEntries;
 		sleep (1 + random 1);
-		_diaryTimer = 10;
 		while {missionNameSpace getVariable ["pMdhExplosivesActions",_defaultValue] == _valueCheck} do
 		{
 			if (_env) then {call _mdhFnc};
-			sleep (7 + random 3);
-			if (time > _diaryTimer && {hasInterface}) then {call _diary; _diaryTimer = time + 10};
+			sleep (2 + random 2);
+			if (hasInterface) then {{call (_x#1)} forEach _mdhModDiaryEntries};
 		};
 	};
 };
